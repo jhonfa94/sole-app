@@ -11,4 +11,13 @@ class Genre extends Model
 
     protected $table = 'genres';
     protected $fillable = ['name', 'description'];
+
+    /**
+     * Relacion uno a muchos
+     *  ? un género literario tiene muchos libros
+     */
+    public function books()
+    {
+        return $this->hasMany(Book::class);
+    }
 }

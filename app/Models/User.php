@@ -41,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Relacion uno a muchos
+     * ? Un usuario realiza varias notas
+     * ? una nota pertenece a un solo usuario
+     */
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
 }

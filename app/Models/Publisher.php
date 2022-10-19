@@ -13,4 +13,14 @@ class Publisher extends Model
         'name', 'country', 'website', 'email',
         'description'
     ];
+
+    /**
+     * Relacion uno a muchos
+     * ? una editorial imprime varios libros
+     * ? un libro es impreso (publicado) en una sola editorial
+     */
+    public function books()
+    {
+        return $this->hasMany(Book::class);
+    }
 }

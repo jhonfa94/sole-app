@@ -13,4 +13,33 @@ class Book extends Model
         'title', 'subtitle', 'language', 'page',
         'published', 'description', 'genre_id', 'publisher_id'
     ];
+
+    /**
+     * Relacion de uno a muchos
+     * ? un genero esta en muchos libros
+     */
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
+    }
+
+    /**
+     * Relacion uno a muchos
+     * ? una editorial imprime varios libros
+     * ? un libro es impreso (publicado) en una sola editorial
+     */
+    public function publisher()
+    {
+        return $this->belongsTo(Publisher::class);
+    }
+
+    /**
+     * Relacion muchos a muchos
+     * ? Un author escribe uno o varios libros
+     * ? un libro esta estrito por uno o varios autores
+     */
+    public function aruthors()
+    {
+        return $this->belongsToMany(Author::class);
+    }
 }
