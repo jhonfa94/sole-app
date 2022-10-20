@@ -42,4 +42,24 @@ class Book extends Model
     {
         return $this->belongsToMany(Author::class);
     }
+
+    /**
+     * Relacion poliformica uno a muchos
+     * ? un libro recibe muchas notas
+     * ? una nota pertenece a un solo libro
+     */
+    public function note()
+    {
+        return $this->morphToMany(Note::class, 'noteable');
+    }
+
+    /**
+     *  Relacion poliformica muchos a muchos
+     *  ? un libro es calificado por uno o varios usuarios
+     * ? un usuario califica a uno o varios libros
+     */
+    public function users()
+    {
+        return $this->morphToMany(User::class, 'userable');
+    }
 }

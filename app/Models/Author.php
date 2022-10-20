@@ -31,4 +31,34 @@ class Author extends Model
     {
         return $this->belongsToMany(Book::class);
     }
+
+    /**
+     * Relacion poliformica
+     * ? un autor tiene una imagen,
+     * ? una imagen pertenece a un solo autor
+     */
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
+    /**
+     * Relacion Poliformica uno muchos
+     * ? un autor recibe muchas notas
+     * ? una nota pertenece a un solo autor
+     */
+    public function note()
+    {
+        return $this->morphToMany(Note::class, 'noteable');
+    }
+
+    /**
+     * Relacion poliformica muchos a muchos
+     * ? un autor es calificado por una o varios usuarios
+     * ? un usuario califica a uno o varios autores
+     */
+    public function users()
+    {
+        return $this->morphToMany(User::class, 'userable');
+    }
 }

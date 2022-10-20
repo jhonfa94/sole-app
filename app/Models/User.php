@@ -51,4 +51,25 @@ class User extends Authenticatable
     {
         return $this->hasMany(Note::class);
     }
+
+    /**
+     * Relacion poliformica muchos a muchos
+     * ? un autor es calificado por una o varios usuarios
+     * ? un usuario califica a uno o varios autores
+     */
+    public function authors()
+    {
+        return $this->morphedByMany(Author::class, 'userable');
+    }
+
+
+    /**
+     *  Relacion poliformica muchos a muchos
+     *  ? un libro es calificado por uno o varios usuarios
+     * ? un usuario califica a uno o varios libros
+     */
+    public function books()
+    {
+        return $this->morphedByMany(Book::class, 'userable');
+    }
 }

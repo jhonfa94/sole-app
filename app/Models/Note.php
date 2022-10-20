@@ -20,4 +20,14 @@ class Note extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Relacion Poliformica uno muchos
+     * ? un autor recibe muchas notas
+     * ? una nota pertenece a un solo autor
+     */
+    public function noteable()
+    {
+        return $this->morphTo();
+    }
 }
